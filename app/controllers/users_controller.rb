@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -11,6 +12,24 @@ class UsersController < ApplicationController
     else
       render :new
     end
+  end
+  
+  def index
+    # return @user.id 
+  end
+
+  def show 
+    # return @user
+  end
+
+  def destroy
+    # @user.destroy
+    # if @user.exit?
+    #   flash[:success] = "Your account is deleted!"
+    #   redirect_to root_path
+    # else
+    #   render :new
+    # end
   end
 
   private
