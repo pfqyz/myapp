@@ -5,9 +5,48 @@
 body {
   font-family: var(--main-font);
   font-optical-sizing: auto;
+  color: #121218
 }
 
 h1, h2, h3, h4 {
   font-family: var(--main-font);
   font-weight: 700; 
 } 
+
+/* 1. Настройка главного контейнера навигации (Разметка всей панели) */
+.navigation-container {
+  display: flex;               /* Включаем технологию Flexbox для выравнивания в линию */
+  align-items: center;         /* Выравниваем все элементы строго по центру по вертикали */
+  gap: 32px;                   /* Свободный отступ МЕЖДУ кнопками (как в Figma) */
+  padding: 16px 24px;          /* Внутренние отступы панели (сверху/снизу, слева/справа) */
+  /*background-color: #BBB7C2;   /* Ваш кастомный цвет фона панели */
+  /*border-bottom: 1px solid #12121826 ; /* Аккуратная разделительная линия */
+}
+
+/* icon and text */
+.custom-icon-link {
+  display: inline-flex;        /* Делаем ссылку гибким контейнером */
+  align-items: center;         /* Иконка и текст теперь идеально выровнены по одной оси */
+  gap: 8px;                    /* Фиксированный отступ между иконкой и текстом */
+  text-decoration: none;       /* Убираем стандартное подчеркивание ссылки */
+  color: #163A10;              /* Ваш кастомный цвет текста из Figma (например, темно-серый) */
+  font-size: 16px;             /* Размер шрифта */
+  transition: all 0.2s ease;   /* Плавная анимация при наведении */
+}
+
+/* link active*/
+.custom-icon-link:hover {
+  color: #204F17;
+  transform: translateY(-1px);
+}
+
+/* icon cust for good view*/
+.custom-icon {
+  font-size: 25px;
+  display: block;
+}
+
+/* logout button */
+.custom-icon-link.logout-btn {
+  color: #B03A2E;
+}
