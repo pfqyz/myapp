@@ -1,10 +1,7 @@
 <h1>Welcome to NotePage!</h1>
-
-<%= link_to "Nem user\n", new_user_path %>
-
-<%= link_to "Profile\n", profile_path %>
-
-
+<%if logged_in?%>
+    <p>Hello, <%= current_user.name %>!</p>
+<%end%>
 
 
 
