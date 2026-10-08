@@ -1,3 +1,4 @@
+
 :root {
   --main-font: 'Hanken Grotesk', sans-serif;
 }
@@ -5,7 +6,8 @@
 body {
   font-family: var(--main-font);
   font-optical-sizing: auto;
-  color: #121218
+  color: #121218;
+  background-color: #D9D9D9;
 }
 
 h1, h2, h3, h4 {
@@ -25,6 +27,11 @@ h1, h2, h3, h4 {
 
 /* icon and text */
 .custom-icon-link {
+  background: none;      /* Убираем фон кнопки */
+  border: none;          /* Убираем рамку */
+  padding: 0;            /* Обнуляем внутренние отступы */
+  font: inherit;         /* Наследуем шрифт родителя */
+  cursor: pointer; 
   display: inline-flex;        /* Делаем ссылку гибким контейнером */
   align-items: center;         /* Иконка и текст теперь идеально выровнены по одной оси */
   gap: 8px;                    /* Фиксированный отступ между иконкой и текстом */
@@ -44,9 +51,54 @@ h1, h2, h3, h4 {
 .custom-icon {
   font-size: 25px;
   display: block;
+  white-space: nowrap;
 }
 
 /* logout button */
 .custom-icon-link.logout-btn {
   color: #B03A2E;
+}
+
+
+/* Главный контейнер для центрирования контента */
+.hero-section {
+  display: flex;
+  flex-direction: column;      /* Выстраиваем элементы вертикально (друг под другом) */
+  align-items: center;         /* Центрируем все элементы по горизонтали */
+  justify-content: center;    /* Центрируем все элементы по вертикали внутри блока */
+  text-align: center;          /* Выравниваем сам текст внутри строк по центру */
+  color: #BBB7C2;
+  /* Отступы */
+  min-height: 70vh;            /* Блок занимает 70% от всей высоты экрана (большие отступы сверху и снизу) */
+  padding: 40px 20px;          /* Безопасные боковые отступы для мобильных экранов */
+}
+
+/* Стили для заголовка */
+.hero-title {
+  font-size: 3.5rem;           /* Крупный выразительный размер шрифта */
+  font-weight: 800;            /* Максимально жирный из Figma (Hanken Grotesk) */
+  color: #121218;              /* Глубокий темно-серый цвет */
+  margin-bottom: 16px;         /* Отступ снизу от заголовка */
+  letter-spacing: -0.02em;     /* Небольшое стильное сужение букв */
+}
+
+/* Стили для подзаголовка */
+.hero-subtitle {
+  font-size: 1.25rem;          /* Приятный для чтения размер */
+  color: #121218;              /* Мягкий серый цвет для второстепенного текста */
+  margin-bottom: 32px;         /* Отступ до подвала */
+  max-width: 500px;            /* Ограничиваем ширину текста, чтобы строки красиво переносились */
+}
+
+/* Выделение имени пользователя */
+.username {
+  /*color: #3182CE; */             
+  font-weight: 600;
+}
+
+/* Копирайт в самом низу */
+.hero-footer {
+  font-size: 0.9rem;
+  color: #12121899;
+  margin-top: auto;
 }
