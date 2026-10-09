@@ -82,23 +82,123 @@ h1, h2, h3, h4 {
   letter-spacing: -0.02em;     /* Небольшое стильное сужение букв */
 }
 
-/* Стили для подзаголовка */
+/* subtitle style */
 .hero-subtitle {
-  font-size: 1.25rem;          /* Приятный для чтения размер */
-  color: #121218;              /* Мягкий серый цвет для второстепенного текста */
-  margin-bottom: 32px;         /* Отступ до подвала */
-  max-width: 500px;            /* Ограничиваем ширину текста, чтобы строки красиво переносились */
+  font-size: 1.25rem;
+  color: #121218;
+  margin-bottom: 32px;
+  max-width: 500px;
 }
 
-/* Выделение имени пользователя */
+/* highlight name */
 .username {
   /*color: #3182CE; */             
   font-weight: 600;
 }
 
-/* Копирайт в самом низу */
+/* c pfqyz */
 .hero-footer {
   font-size: 0.9rem;
   color: #12121899;
   margin-top: auto;
+}
+
+
+/*main page*/
+
+.three-column-layout {
+  display: grid;
+  grid-template-columns: 20% 55% 25%;
+  height: 100vh;      /* Ровно 100% от высоты экрана */
+  margin: 0;
+  overflow: hidden;   /* Защита от лишних скроллов страницы */
+}
+
+/* Общие правила для всех колонок */
+.column {
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+/* 2. Левый сайдбар: превращаем в жесткий вертикальный Flexbox */
+.sidebar-workspace, .sidebar-left {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important; /* Гарантированно выталкивает верх вверх, а низ — вниз */
+  height: 100vh !important;                  /* Растягиваем на всю высоту экрана */
+  box-sizing: border-box;
+}
+
+/* Фиксируем блок в самом низу */
+.sidebar-bottom {
+  margin-top: auto !important; /* Самый мощный CSS-выталкиватель элемента к нижнему краю */
+  padding-top: 20px;
+  width: 100%;
+}
+
+/* Вертикальные разделительные линии из Figma */
+.content-center {
+  border-left: 1px solid #12121826;     
+  border-right: 1px solid #12121826; 
+   
+}
+
+/* Специфический стиль для кнопки Логаута в нижнем углу */
+.sidebar-bottom .logout-btn {
+  width: 100%;
+  max-width: 100%; 
+  padding: 12px 16px;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: background-color 0.2s ease;
+}
+
+.sidebar-bottom .logout-btn:hover {
+  background-color: rgba(176, 58, 46, 0.1); /* Легкий красный фон при наведении */
+}
+
+/* 3. Карточка профиля */
+.profile-card-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #C9C6CF; 
+  width: 100%;
+  max-width: 100%;     
+  padding: 24px 16px;
+  border-radius: 8px;  
+  box-sizing: border-box;           
+  text-decoration: none;          
+  color: #121218;                 
+  
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Анимация при наведении на квадрат профиля */
+.profile-card-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Иконка внутри квадрата */
+.profile-icon {
+  font-size: 32px !important;     
+  color: #163A10;                 
+}
+
+/* Контейнер для текста внутри квадрата */
+.profile-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-name {
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.profile-hint {
+  font-size: 12px;
+  color: #12121899;
 }

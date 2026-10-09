@@ -1,11 +1,7 @@
 <div class="hero-section">
-  <h1 class="hero-title">Welcome to NotePage!</h1>
-  
-  <% if logged_in? %>
-    <p class="hero-subtitle">Hello, <span class="username"><%= current_user.name %></span>!</p>
-  <% else %>
-    <p class="hero-subtitle">A convenient space for your thoughts and notes</p>
-  <% end %>
 
-  <p class="hero-footer">&copy; @pfqyz, <%= Time.now.year %></p>
+    <h1 class="hero-title">Welcome to NotePage!</h1>
+    <p class="hero-subtitle">A convenient space for your thoughts and notes</p>
+    
+    <p class="hero-footer">&copy; @pfqyz, <%= Time.now.year %></p>
 </div>
