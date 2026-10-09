@@ -1,26 +1,24 @@
+<div class="form-group">
+  <div class="form-group">
+    <span class="form-label">Email:</span>
+    <div class="form-box"><%= @user.email %></div>
+  </div>
 
-<div class="container mt-4">
+  <div class="form-group">
+    <span class="form-label">Name:</span>
+    <div class="form-box"><%= @user.name %></div>
+  </div>
 
-    <div class="mb-3 row">
-        <div class="col-sm-2 fw-bold">Email:</div>
-        
-        <div class="col-sm-10"><%= @user.email %></div>
-    </div>
+  <div class="form-group">
+    <span class="form-label">Nickname:</span>
+    <div class="form-box"><%= @user.nickname %></div>
+  </div>
 
-    <div class="mb-3 row">
-        <div class="col-sm-2 fw-bold">Name:</div>
-        <div class="col-sm-10"><%= @user.name %></div>
-    </div>
-
-    <div class="mb-3 row">
-        <div class="col-sm-2 fw-bold">Nickname:</div>
-        <div class="col-sm-10"><%= @user.nickname %></div>
-    </div>
-
-    <div class="mb-3 row">
-        <div class="col-sm-2 fw-bold">Password:</div>
-        <div class="col-sm-10">**********</div>
-    </div>
-    
-    <%# <%= link_to "Edit profile", edit_users_path(@user), class: "btn btn-warning me-2" %>
+  <div class="form-group">
+    <span class="form-label">Password:</span>
+    <div class="form-box">********</div>
+  </div>
 </div>
+
+
+<%= link_to "Edit profile",  new_user_path(@user), class: "form-submit-btn" %>
