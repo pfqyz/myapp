@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_09_23_200200) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_09_090214) do
+  create_table "notes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.boolean "is_active"
+    t.boolean "is_shared"
+    t.string "title"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.date "date"
+    t.boolean "is_important"
+    t.boolean "reschedule"
+    t.integer "status"
+    t.text "text"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
