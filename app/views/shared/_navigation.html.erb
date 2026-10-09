@@ -4,7 +4,8 @@
     <%= icon_link_to "Home", root_path, "home" %>
 
     <% if logged_in? %>
-      <%= icon_link_to "Profile", profile_path, "Person" %>
+      <% icon_link_to "Profile", profile_path, "Person" %>
+      
       <%= icon_link_to "Log out", logout_path, "Logout", data: { turbo_method: :delete }, class: "logout-btn" %>
     <% else %>
       <%= icon_link_to "Log in", login_path, "Login" %>

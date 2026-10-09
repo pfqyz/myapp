@@ -1,27 +1,57 @@
 <div class="three-column-layout">
   
-  <!-- Левая колонка — Сайдбар в чистом кастомном стиле -->
+  <!-- left coloumn -->
   <aside class="column sidebar-workspace">
     
-    <!-- Верхний блок: Профиль -->
+    <!-- Profile -->
     <div class="sidebar-top">
       <%= link_to profile_path, class: "profile-card-link" do %>
-        <span class="material-symbols-outlined profile-icon">account_circle</span>
-        <div class="profile-info">
+        <span class="material-symbols-outlined icon">account_circle</span>
+        <div class="info">
           <span class="profile-name"><%= @user.name %></span>
-          <span class="profile-hint">Go to profile</span>
+          <span class="hint">Go to profile</span>
+        </div>
+      <% end %>
+    </div>
+    
+    
+    <!-- folder -->
+    <div class="sidebar-top">
+      <%= link_to profile_path, class: "sidebar-bottom-link" do %>
+        <span class="material-symbols-outlined icon">folder</span>
+        <div class="info">
+            folders
+          <span class="hint">Go to folders</span>
+        </div>
+      <% end %>
+    </div>
+    <!-- schedule -->
+    <div class="sidebar-top">
+      <%= link_to profile_path, class: "sidebar-bottom-link" do %>
+        <span class="material-symbols-outlined icon">calendar_month</span>
+        <div class="info">
+            schedule
+          <span class="hint">Go to your schedule</span>
+        </div>
+      <% end %>
+    </div>
+    <!-- rubber -->
+    <div class="sidebar-top">
+      <%= link_to profile_path, class: "sidebar-bottom-link" do %>
+        <span class="material-symbols-outlined icon">delete</span>
+        <div class="info">
+            delete
+          <span class="hint">Go to deleted files</span>
         </div>
       <% end %>
     </div>
 
-    <!-- Нижний блок: Выход (Железобетонный button_to, прижатый к низу) -->
     <div class="sidebar-bottom">
       <%= icon_link_to "Log out", logout_path, "logout", data: { turbo_method: :delete }, class: "logout-btn custom-icon-link" %>
     </div>
     
   </aside>
 
-  <!-- Центральная колонка -->
   <main class="column content-center">
     <div class="notes-header">
       <h2>My notes</h2>
@@ -29,7 +59,6 @@
     </div>
   </main>
 
-  <!-- Правая колонка -->
   <aside class="column sidebar-right">
     <h2>TO DO</h2>
     <p>Your tasks will be displayed here.</p>

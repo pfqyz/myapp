@@ -67,7 +67,6 @@ h1, h2, h3, h4 {
   align-items: center;         /* Центрируем все элементы по горизонтали */
   justify-content: center;    /* Центрируем все элементы по вертикали внутри блока */
   text-align: center;          /* Выравниваем сам текст внутри строк по центру */
-  color: #BBB7C2;
   /* Отступы */
   min-height: 70vh;            /* Блок занимает 70% от всей высоты экрана (большие отступы сверху и снизу) */
   padding: 40px 20px;          /* Безопасные боковые отступы для мобильных экранов */
@@ -145,10 +144,11 @@ h1, h2, h3, h4 {
 
 /* Специфический стиль для кнопки Логаута в нижнем углу */
 .sidebar-bottom .logout-btn {
+  align-items: center;
   width: 100%;
   max-width: 100%; 
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: 12px;
   box-sizing: border-box;
   transition: background-color 0.2s ease;
 }
@@ -158,15 +158,14 @@ h1, h2, h3, h4 {
 }
 
 /* 3. Карточка профиля */
-.profile-card-link {
+.profile-card-link, .sidebar-bottom-link {
   display: flex;
   align-items: center;
   gap: 12px;
-  background-color: #C9C6CF; 
   width: 100%;
   max-width: 100%;     
   padding: 24px 16px;
-  border-radius: 8px;  
+  border-radius: 12px;  
   box-sizing: border-box;           
   text-decoration: none;          
   color: #121218;                 
@@ -175,22 +174,9 @@ h1, h2, h3, h4 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Анимация при наведении на квадрат профиля */
-.profile-card-link:hover {
+.profile-card-link:hover, .sidebar-bottom-link:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-/* Иконка внутри квадрата */
-.profile-icon {
-  font-size: 32px !important;     
-  color: #163A10;                 
-}
-
-/* Контейнер для текста внутри квадрата */
-.profile-info {
-  display: flex;
-  flex-direction: column;
 }
 
 .profile-name {
@@ -198,7 +184,105 @@ h1, h2, h3, h4 {
   font-size: 16px;
 }
 
-.profile-hint {
+.profile-card-link {
+  background-color: #C9C6CF; 
+  padding: 24px 16px; /* Большие вертикальные отступы */
+}
+
+.sidebar-bottom-link {
+  padding: 24px 16px;       /* Компактные вертикальные отступы */
+}
+
+.sidebar-bottom-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 100%; 
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  text-decoration: none;  
+  color: #121218;   
+
+  transition: background-color 0.2s ease;
+}
+
+/* Иконка внутри квадрата */
+.icon {
+  font-size: 32px !important;     
+  color: #163A10;                 
+}
+
+/* Контейнер для текста внутри квадрата */
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.hint {
   font-size: 12px;
   color: #12121899;
+}
+
+/* FORM-BOX */
+/* Контейнер для группы "подпись + инпут" */
+.form-group {
+  display: flex;
+  flex-direction: column;   /* Размещаем подпись СВЕРХУ над полем ввода */
+  gap: 8px;                 /* Отступ между подписью и боксом */
+  margin-bottom: 20px;      /* Расстояние между самими группами полей */
+  max-width: 350px;         /* Ограничиваем максимальную ширину формы */
+}
+
+/* Стиль для текстовой подписи поля */
+.form-label {
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  color: #121218;
+}
+
+.form-box {
+  width: 100%;
+  padding: 12px 16px;         /* Внутренние отступы (высота и простор для текста) */
+  font-family: var(--main-font);
+  font-size: 15px;
+  color: #121218;
+  
+  border: 1px solid #12121826;/* Мягкая тонкая рамка с прозрачностью, как ваши линии */
+  border-radius: 8px;         /* Красивое современное скругление углов */
+  
+  box-sizing: border-box;
+  outline: none;              /* Убираем стандартную синюю обводку браузера */
+  transition: all 0.2s ease;  /* Плавная анимация при клике */
+}
+
+/* Эффект при клике (фокусе) внутрь бокса */
+.form-box:focus {
+  border-color: #163A10;      /* Рамка становится вашей фирменной зеленой */
+  box-shadow: 0 0 0 3px rgba(22, 58, 16, 0.1); /* Легкое красивое свечение вокруг */
+  background-color: #FAFDF9;  /* Фон бокса слегка меняет оттенок */
+}
+
+/* Стиль для текста-подсказки (placeholder) внутри бокса */
+.form-box::placeholder {
+  color: #12121866;           /* Полупрозрачный цвет для плейсхолдера */
+}
+
+/* Бонус: Кастомная стильная кнопка формы */
+.form-submit-btn {
+  font-family: var(--main-font);
+  font-weight: 600;
+  background-color: #163A10;  /* Ваша фирменная зеленая кнопка */
+  color: #C9C6CF;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background-color: #204F17;  /* Темнеет при наведении */
 }
