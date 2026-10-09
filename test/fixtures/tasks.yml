@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  text: MyText
+  is_important: false
+  status: 1
+  date: 2026-10-09
+  reschedule: false
+
+two:
+  text: MyText
+  is_important: false
+  status: 1
+  date: 2026-10-09
+  reschedule: false
