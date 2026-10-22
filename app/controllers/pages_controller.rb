@@ -17,4 +17,16 @@ class PagesController < ApplicationController
     redirect_to login_path, alert: "Please, log in account" if @user.nil?
   end
 
+  def folders
+    @user = current_user
+  end
+
+  def schedule
+    @user = current_user
+  end
+
+  def deleted_files
+    @user = current_user
+  end
+
 end
