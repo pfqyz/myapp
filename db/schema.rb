@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_09_090214) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_22_220513) do
+  create_table "folders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_folders_on_user_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.boolean "is_active"
@@ -65,6 +73,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_090214) do
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
 
+  add_foreign_key "folders", "users"
   add_foreign_key "user_notes", "notes"
   add_foreign_key "user_notes", "users"
   add_foreign_key "user_tasks", "tasks"
