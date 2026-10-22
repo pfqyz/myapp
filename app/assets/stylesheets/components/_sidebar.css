@@ -84,3 +84,73 @@
   font-size: 12px;
   color: var(--color-text-muted);
 }
+
+/* Уменьшаем размер иконок и текста для нижних кнопок */
+.sidebar-bottom .icon {
+  font-size: 20px !important; /* Иконки поменьше */
+}
+
+.sidebar-bottom .link-text {
+  font-size: 14px; /* Текст поменьше */
+}
+
+/* Эффект при наведении на Log out */
+.sidebar-bottom .logout-btn:hover {
+  color: var(--color-danger);
+  transform: translateY(-1px);
+  background: none; /* Убираем фон, чтобы было как у Home */
+}
+
+/* Делаем иконку и текст внутри кнопки Log out красными */
+.logout-btn .icon {
+  color: var(--color-danger) !important; 
+}
+
+.logout-btn .link-text {
+  color: var(--color-danger);
+}
+
+/* Контейнер для двух нижних кнопок */
+.bottom-nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px; /* Отступ между кнопками */
+}
+
+/* Общий стиль для нижних кнопок (как у Folders/Schedule) */
+.footer-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центрируем текст и иконку внутри */
+  gap: 6px;
+  width: 48%; /* Каждая кнопка занимает почти половину ширины */
+  padding: 12px;
+  border-radius: 12px; /* Красивые закругления */
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--color-text-main);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Эффект при наведении (как у кнопок справа) */
+.footer-nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* Легкий серый фон */
+  transform: translateY(-1px);
+}
+
+/* Отдельный фон для Logout при наведении (красноватый) */
+.footer-nav-link.logout-btn:hover {
+  background-color: rgba(176, 58, 46, 0.1);
+}
+
+/* Уменьшаем размер иконок внизу */
+.footer-nav-link .icon {
+  font-size: 20px !important;
+}
+
+/* Делаем иконку и текст Log out красными */
+.logout-btn .icon,
+.logout-btn .link-text {
+  color: var(--color-danger) !important;
+}

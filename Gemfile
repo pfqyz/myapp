@@ -70,3 +70,6 @@ group :test do
 end
 
 gem 'json', '< 3.0.2'
+
+gem 'email_validator'
+

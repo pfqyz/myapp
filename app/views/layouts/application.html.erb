@@ -36,19 +36,13 @@
   </head>
 
   <body>
-    <% unless current_page?(main_path) %>
-      <%= render 'shared/navigation' %> 
-    <% end %>
-    <div class="container mt-4">
-      
-      <!-- Блок автоматического вывода всплывающих уведомлений -->
-      <% flash.each do |type, message| %>
-        <div class="alert alert-info alert-dismissible fade show" role="alert">
-          <%= message %>
-        </div>
-      <% end %>
+  <%# Показываем верхнее меню везде, КРОМЕ страниц с сайдбаром %>
+  <% unless controller_name == 'pages' && ['main', 'profile', 'folders', 'schedule', 'deleted_files'].include?(action_name) %>
+    <%= render 'navigation' %>
+  <% end %>
 
-      <%= yield %>
-    </div> 
-  </body>
+  <main class="container">
+    <%= yield %>
+  </main>
+</body>
 </html>
