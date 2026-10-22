@@ -1,0 +1,36 @@
+.navigation-container {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 16px 24px;
+}
+
+.custom-icon-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer; 
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-primary);
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.custom-icon-link:hover {
+  color: var(--color-primary-hover);
+  transform: translateY(-1px);
+}
+
+.custom-icon {
+  font-size: 25px;
+  display: block;
+  white-space: nowrap;
+}
+
+.custom-icon-link.logout-btn {
+  color: var(--color-danger);
+}

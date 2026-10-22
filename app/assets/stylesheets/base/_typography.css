@@ -1,0 +1,11 @@
+body {
+  font-family: var(--main-font);
+  font-optical-sizing: auto;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--main-font);
+  font-weight: 700; 
+} 

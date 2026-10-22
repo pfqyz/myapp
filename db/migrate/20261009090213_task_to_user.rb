@@ -11,3 +11,13 @@ class TaskToUser < ActiveRecord::Migration[8.1]
     add_index :user_tasks, :role
   end
 end
+/*
+ * Главный файл стилей
+ *= require base/variables
+ *= require base/typography
+ *= require layout/grid
+ *= require components/navigation
+ *= require components/sidebar
+ *= require components/hero
+ *= require components/forms
+ */
