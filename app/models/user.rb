@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :notes, through: :user_notes
   has_many :tasks, through: :user_tasks
 
+  has_many :folders, dependent: :destroy
+  
   # Заметки, где пользователь — автор
   has_many :authored_notes, -> { where(user_notes: { role: "author" }) }, through: :user_notes, source: :note
 
