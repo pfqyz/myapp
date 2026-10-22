@@ -1,4 +1,4 @@
-class CreateUserNotes < ActiveRecord::Migration[8.1]
+class UserToNotes < ActiveRecord::Migration[8.1]
   def change
     create_table :user_notes do |t|
       t.references :user, null: false, foreign_key: true

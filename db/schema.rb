@@ -29,6 +29,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_090214) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_notes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "note_id", null: false
+    t.string "role", default: "author", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["note_id"], name: "index_user_notes_on_note_id"
+    t.index ["role"], name: "index_user_notes_on_role"
+    t.index ["user_id", "note_id"], name: "index_user_notes_on_user_id_and_note_id", unique: true
+    t.index ["user_id"], name: "index_user_notes_on_user_id"
+  end
+
+  create_table "user_tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "role", default: "assignee", null: false
+    t.integer "task_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["role"], name: "index_user_tasks_on_role"
+    t.index ["task_id"], name: "index_user_tasks_on_task_id"
+    t.index ["user_id", "task_id"], name: "index_user_tasks_on_user_id_and_task_id", unique: true
+    t.index ["user_id"], name: "index_user_tasks_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "email", null: false
@@ -40,4 +64,9 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_09_090214) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["nickname"], name: "index_users_on_nickname", unique: true
   end
+
+  add_foreign_key "user_notes", "notes"
+  add_foreign_key "user_notes", "users"
+  add_foreign_key "user_tasks", "tasks"
+  add_foreign_key "user_tasks", "users"
 end
