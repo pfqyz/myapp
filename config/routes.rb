@@ -12,4 +12,9 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: :logout
 
   resources :users, only: %i[new create] 
+
+  get 'folders', to: 'pages#folders', as: :folders
+  get 'schedule', to: 'pages#schedule', as: :schedule
+  get 'deleted_files', to: 'pages#deleted_files', as: :deleted_files
+
 end
