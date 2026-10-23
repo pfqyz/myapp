@@ -1,24 +1,69 @@
-<div class="form-group">
-  <div class="form-group">
-    <span class="form-label">Email:</span>
-    <div class="form-box"><%= @user.email %></div>
-  </div>
+<div class="three-column-layout">
+  
+  <%= render 'sidebar' %>
 
-  <div class="form-group">
-    <span class="form-label">Name:</span>
-    <div class="form-box"><%= @user.name %></div>
-  </div>
+  <main class="column content-center" style="grid-column: span 2;">
+    
+    <div class="notes-header">
+      <h2>Profile</h2>
+    </div>
 
-  <div class="form-group">
-    <span class="form-label">Nickname:</span>
-    <div class="form-box"><%= @user.nickname %></div>
-  </div>
+    <div class="profile-form-container">
+      <%= form_with model: @user, url: user_path(@user), method: :patch, id: "profileForm" do |f| %>
+        
+        <div class="form-group">
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, class: "form-box profile-input", readonly: true %>
+        </div>
 
-  <div class="form-group">
-    <span class="form-label">Password:</span>
-    <div class="form-box">********</div>
-  </div>
+        <div class="form-group">
+          <%= f.label :name, class: "form-label" %>
+          <%= f.text_field :name, class: "form-box profile-input", readonly: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :nickname, class: "form-label" %>
+          <%= f.text_field :nickname, class: "form-box profile-input", readonly: true %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, "New Password (leave blank to keep current)", class: "form-label" %>
+          <%= f.password_field :password, class: "form-box profile-input", readonly: true, autocomplete: "new-password" %>
+        </div>
+
+      <% end %>
+      
+      <!-- Кнопки (под формой) -->
+      <div class="profile-actions" id="viewModeActions">
+        <!-- Кнопка Edit (тонкая обводка) -->
+        <button type="button" id="editProfileBtn" class="btn-outline-green">
+          Edit profile
+        </button>
+
+        <!-- Кнопка Delete (с текстом и иконкой) -->
+        <button type="button" id="openDeleteModalBtn" class="btn-outline-danger">
+          <span class="material-symbols-outlined">delete</span>
+          <span>Delete account</span>
+        </button>
+      </div>
+
+      <!-- Кнопки сохранения (появляются при редактировании) -->
+      <div class="profile-actions" id="editModeActions" style="display: none;">
+        <button type="submit" form="profileForm" class="btn-save">Save</button>
+        <button type="button" id="cancelEditBtn" class="btn-back">Back</button>
+      </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО УДАЛЕНИЯ -->
+    <dialog id="deleteProfileModal" class="modal-dialog">
+      <h3>Delete Profile</h3>
+      <p style="margin: 16px 0 24px 0;">Are you sure you want to delete your account? This action cannot be undone.</p>
+      
+      <div class="modal-actions">
+        <button type="button" id="closeDeleteModalBtn" class="modal-btn-back">Back</button>
+        <%= button_to "Delete", user_path(@user), method: :delete, class: "modal-btn-delete" %>
+      </div>
+    </dialog>
+
+  </main>
 </div>
-
-
-<%= link_to "Edit profile",  new_user_path(@user), class: "form-submit-btn" %>

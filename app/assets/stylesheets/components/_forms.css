@@ -1,3 +1,7 @@
+/* =========================================
+   БАЗОВЫЕ ЭЛЕМЕНТЫ ФОРМ
+   ========================================= */
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -19,7 +23,7 @@
   font-family: var(--main-font);
   font-size: 15px;
   color: var(--color-text-main);
-  border: 1px solid #12121836;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   background-color: var(--color-bg-input);
   box-sizing: border-box;
@@ -29,116 +33,67 @@
 
 .form-box:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(22, 58, 16, 0.1);
-  background-color: #E4E8E3;
+  box-shadow: var(--shadow-focus);
+  background-color: var(--color-bg-focus);
 }
 
 .form-box::placeholder {
-  color: #12121866;
+  color: var(--color-text-muted);
 }
 
-/* Базовая кнопка (Активное состояние - Зеленая) */
+/* =========================================
+   КНОПКА "СОЗДАТЬ" / "СОХРАНИТЬ"
+   ========================================= */
+
 .form-submit-btn {
-  font-family: var(--main-font);
-  font-weight: 600;
-  background-color: var(--color-primary); /* Зеленый */
-  color: #FFFFFF; /* Белый текст для контраста */
-  padding: 12px 24px;
-  border: 2px solid var(--color-primary); /* Обводка в цвет фона */
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease; /* Плавная анимация перехода цвета */
-}
-
-/* Эффект при наведении на активную кнопку */
-.form-submit-btn:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
-  border-color: var(--color-primary-hover);
-}
-
-/* НЕАКТИВНАЯ КНОПКА (Disabled) */
-.form-submit-btn:disabled {
-  background-color: #E5E5E5; /* Светло-серый фон */
-  color: #999999; /* Серый текст, чтобы было понятно, что кнопка не работает */
-  border: 2px solid #CCCCCC; /* Четкая серая обводка */
-  cursor: not-allowed; /* Курсор "запрещено" */
-  opacity: 1; /* Убираем стандартную прозрачность браузера, чтобы цвета были четкими */
-}
-
-/* Само окно */
-.modal-dialog {
-  border: none;
-  border-radius: 16px;
-  padding: 32px;
-  background-color: var(--color-bg-main); /* Наш серый фон */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  max-width: 400px;
-  width: 100%;
-}
-
-/* Затемнение сзади */
-.modal-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.4); 
-  backdrop-filter: blur(2px); 
-}
-
-/* Заголовок внутри окна */
-.modal-dialog h3 {
-  margin-top: 0;
-  color: var(--color-text-main);
-}
-
-/* Общий контейнер для кнопок внизу */
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-/* Кнопка Back (Отмена) */
-.btn-cancel {
-  appearance: none; /* Убираем стили браузера */
-  background-color: transparent;
-  border: 2px solid var(--border-color);
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-family: var(--main-font);
-  font-weight: 600;
-  color: var(--color-text-main);
-  transition: all 0.2s ease;
-}
-
-.btn-cancel:hover {
-  background-color: var(--color-bg-input);
-  border-color: var(--color-text-muted);
-}
-
-/* Кнопка Create (Активная) */
-.form-submit-btn {
-  appearance: none; /* Убираем стили браузера */
+  appearance: none;
   font-family: var(--main-font);
   font-weight: 600;
   background-color: var(--color-primary);
   color: #FFFFFF;
   padding: 10px 20px;
-  border: 2px solid var(--color-primary);
+  border: 1px solid var(--color-primary);
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background-color 0.2s ease;
 }
 
-/* Кнопка Create (Неактивная - серый фон, четкая рамка) */
+.form-submit-btn:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
 .form-submit-btn:disabled {
-  background-color: #E5E5E5;
-  color: #999999;
-  border: 2px solid #CCCCCC;
+  background-color: var(--color-bg-input);
+  color: var(--color-text-muted);
+  border: 1px solid var(--border-color);
   cursor: not-allowed;
   opacity: 1;
 }
 
-/* Поле ввода внутри окна */
+/* =========================================
+   МОДАЛЬНОЕ ОКНО (DIALOG)
+   ========================================= */
+
+.modal-dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 32px;
+  background-color: var(--color-bg-main);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(2px); 
+}
+
+.modal-dialog h3 {
+  margin-top: 0;
+  color: var(--color-text-main);
+}
+
 .modal-dialog .form-box {
   width: 100%;
   padding: 12px 16px;
@@ -155,5 +110,190 @@
 
 .modal-dialog .form-box:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(22, 58, 16, 0.1);
+  box-shadow: var(--shadow-focus);
+}
+
+/* =========================================
+   КНОПКИ В МОДАЛЬНЫХ ОКНАХ
+   ========================================= */
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Кнопка Back (Отмена) */
+.btn-cancel {
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  color: var(--color-text-main);
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: var(--color-bg-input);
+}
+
+/* Кнопки удаления в модалке */
+.modal-btn-back {
+  background-color: transparent; /* Прозрачный, как фон */
+  border: 1px solid var(--border-color); 
+  color: var(--color-text-main);
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.modal-btn-back:hover {
+  background-color: var(--color-bg-input); /* Тоже светлеет при наведении */
+}
+
+/* Кнопка Delete в модалке */
+.modal-btn-delete {
+  background-color: transparent;
+  border: 1px solid var(--color-danger-border); /* Тонкая полупрозрачная обводка */
+  color: var(--color-danger);
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+/* Эффект при наведении — как у Logout */
+.modal-btn-delete:hover {
+  background-color: rgba(176, 58, 46, 0.1); /* Легкий полупрозрачный красный фон */
+  border-color: var(--color-danger); /* Обводка становится чуть ярче */
+}
+
+/* =========================================
+   СТРАНИЦА ПРОФИЛЯ
+   ========================================= */
+
+.profile-form-container {
+  max-width: 400px;
+}
+
+/* Поля в режиме просмотра (светлее фона) */
+.profile-input[readonly] {
+  background-color: var(--color-bg-input); 
+  border: 1px solid var(--border-color);
+  color: var(--color-text-main);
+  cursor: default;
+}
+
+/* Поля в режиме редактирования */
+.profile-input:not([readonly]) {
+  background-color: var(--color-bg-input);
+  border-color: var(--color-primary);
+  cursor: text;
+}
+
+/* Поля при фокусе (зеленоватый оттенок) */
+.profile-input:not([readonly]):focus {
+  background-color: var(--color-bg-focus);
+  box-shadow: var(--shadow-focus);
+  outline: none;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Кнопка Edit profile (тонкая зеленая обводка) */
+.btn-outline-green {
+  background-color: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.btn-outline-green:hover {
+  background-color: var(--color-bg-input);
+}
+
+/* Кнопка Delete account (тонкая красная обводка, с текстом) */
+.btn-outline-danger {
+  background-color: transparent;
+  border: 1px solid var(--color-danger-border);
+  color: var(--color-danger);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-outline-danger .material-symbols-outlined {
+  font-size: 20px;
+}
+
+.btn-outline-danger:hover {
+  background-color: rgba(176, 58, 46, 0.1);
+}
+
+/* Кнопки Save и Back (одинаковые) */
+.btn-save, .btn-back {
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid;
+  transition: background-color 0.2s ease;
+}
+
+.btn-save {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-save:hover {
+  background-color: var(--color-bg-input);
+}
+
+.btn-back {
+  background-color: transparent; /* Прозрачный, как фон */
+  border: 1px solid var(--border-color); /* Тонкая обводка */
+  color: var(--color-text-main);
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.btn-back:hover {
+  background-color: var(--color-bg-input); /* Светлеет при наведении (#E5E5E5) */
 }

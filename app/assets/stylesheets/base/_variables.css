@@ -9,4 +9,13 @@
   --color-bg-input: #E5E5E5;
   --border-color: #12121826;
   --color-bg-note: #E5E5E5; 
+
+  --color-bg-surface: #DСDСDС;          /* Чуть белее фона (для readonly) */
+  --color-bg-focus: #F4F8F3;            /* Зеленоватый оттенок при фокусе */
+  --color-bg-hover: #D0D0D0;            /* Темно-серый для наведения */
+  
+  --color-danger-border: rgba(176, 58, 46, 0.3); /* Прозрачная красная обводка */
+  --color-danger-hover: #FADBD8;        /* Светло-красный фон при наведении */
+  
+  --shadow-focus: 0 0 0 3px rgba(22, 58, 16, 0.1); /* Мягкая тень для фокуса */
 }

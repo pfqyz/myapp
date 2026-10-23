@@ -29,3 +29,54 @@ document.addEventListener("turbo:load", () => {
     });
   }
 });
+document.addEventListener("turbo:load", () => {
+  // --- ЛОГИКА РЕДАКТИРОВАНИЯ ПРОФИЛЯ ---
+  const editBtn = document.getElementById('editProfileBtn');
+  const cancelBtn = document.getElementById('cancelEditBtn');
+  const viewActions = document.getElementById('viewModeActions');
+  const editActions = document.getElementById('editModeActions');
+  const profileForm = document.getElementById('profileForm');
+  
+  if (editBtn && profileForm) {
+    const inputs = profileForm.querySelectorAll('.profile-input');
+    
+    // Нажали "Edit profile"
+    editBtn.addEventListener('click', () => {
+      viewActions.style.display = 'none';
+      editActions.style.display = 'flex';
+      
+      inputs.forEach(input => {
+        input.removeAttribute('readonly');
+      });
+      
+      inputs[0].focus();
+    });
+
+    // Нажали "Back" (отмена)
+    cancelBtn.addEventListener('click', () => {
+      viewActions.style.display = 'flex';
+      editActions.style.display = 'none';
+      
+      inputs.forEach(input => {
+        input.setAttribute('readonly', true);
+      });
+      
+      profileForm.reset(); // Сбрасываем изменения
+    });
+  }
+
+  // --- ЛОГИКА МОДАЛЬНОГО ОКНА УДАЛЕНИЯ ---
+  const deleteModal = document.getElementById('deleteProfileModal');
+  const openDeleteBtn = document.getElementById('openDeleteModalBtn');
+  const closeDeleteBtn = document.getElementById('closeDeleteModalBtn');
+
+  if (deleteModal && openDeleteBtn) {
+    openDeleteBtn.addEventListener('click', () => {
+      deleteModal.showModal();
+    });
+
+    closeDeleteBtn.addEventListener('click', () => {
+      deleteModal.close();
+    });
+  }
+});
