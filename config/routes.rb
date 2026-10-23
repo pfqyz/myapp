@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get 'schedule', to: 'pages#schedule', as: :schedule
   get 'deleted_files', to: 'pages#deleted_files', as: :deleted_files
 
-  resources :notes, only: [:create]
+  resources :notes, only: [:create, :show, :update]
 end

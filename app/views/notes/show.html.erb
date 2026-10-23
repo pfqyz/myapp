@@ -1,0 +1,15 @@
+<div class="three-column-layout">
+  <%= render 'pages/sidebar' %>
+  
+  <main class="column content-center" style="grid-column: span 2;">
+    <div class="notes-header">
+      <h2><%= @note.title %></h2>
+      <button id="saveCanvasBtn" class="btn-outline-green">Save Canvas</button>
+    </div>
+    
+    <!-- Контейнер для холста -->
+    <div class="canvas-wrapper">
+      <div id="canvas-container"></div>
+    </div>
+  </main>
+</div>

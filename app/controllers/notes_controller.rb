@@ -12,7 +12,9 @@ class NotesController < ApplicationController
         redirect_to main_path, alert: "Title can't be blank"
       end
     end
-
+  def show
+    @note = current_user.notes.find(params[:id])
+  end
   private
 
   def note_params

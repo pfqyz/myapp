@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_23_064709) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_23_120913) do
   create_table "folders", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.string "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_23_064709) do
   end
 
   create_table "notes", force: :cascade do |t|
+    t.json "content", default: {}, null: false
     t.datetime "created_at", null: false
     t.boolean "is_active"
     t.boolean "is_shared"
