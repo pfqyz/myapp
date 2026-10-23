@@ -45,18 +45,19 @@
     <% end %>
   </div>
 
-    <!-- НИЖНИЙ БЛОК С КНОПКАМИ -->
+      <!-- НИЖНИЙ БЛОК С КНОПКАМИ -->
   <div class="sidebar-bottom">
     <div class="bottom-nav-container">
       
       <!-- Кнопка Home -->
-      <%= link_to main_path, class: "footer-nav-link" do %>
-        <span class="material-symbols-outlined icon">home</span>
-        <span class="link-text">Home</span>
-      <% end %>
-
-      <!-- Кнопка Log out -->
-      <%= link_to logout_path, data: { turbo_method: :delete }, class: "footer-nav-link logout-btn" do %>
+        <% unless current_page?(main_path) %>
+            <%= link_to main_path, class: "footer-nav-link" do %>
+                <span class="material-symbols-outlined icon">home</span>
+                <span class="link-text">Home</span>
+            <% end %>
+        <% end %>
+      <!-- Кнопка Log out (Используем button_to для надежности) -->
+      <%= button_to logout_path, method: :delete, class: "footer-nav-link logout-btn" do %>
         <span class="material-symbols-outlined icon">logout</span>
         <span class="link-text">Log out</span>
       <% end %>

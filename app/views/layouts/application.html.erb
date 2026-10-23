@@ -38,7 +38,7 @@
   <body>
   <%# Показываем верхнее меню везде, КРОМЕ страниц с сайдбаром %>
   <% unless controller_name == 'pages' && ['main', 'profile', 'folders', 'schedule', 'deleted_files'].include?(action_name) %>
-    <%= render 'navigation' %>
+    <%= render 'shared/navigation' %>
   <% end %>
 
   <main class="container">

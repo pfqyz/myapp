@@ -110,36 +110,47 @@
   color: var(--color-danger);
 }
 
-/* Контейнер для двух нижних кнопок */
+/* Обновленный контейнер для нижних кнопок */
 .bottom-nav-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  gap: 8px; /* Отступ между кнопками */
+  gap: 8px; 
 }
 
-/* Общий стиль для нижних кнопок (как у Folders/Schedule) */
+/* Из-за button_to появляется тег form, делаем его невидимым для сетки */
+.bottom-nav-container form {
+  display: contents; /* Это магическое свойство заставляет форму "исчезнуть", оставляя только кнопку внутри */
+}
+
+/* Общий стиль для нижних кнопок (и для ссылки, и для кнопки) */
 .footer-nav-link {
   display: flex;
   align-items: center;
-  justify-content: center; /* Центрируем текст и иконку внутри */
+  justify-content: center; 
   gap: 6px;
-  width: 48%; /* Каждая кнопка занимает почти половину ширины */
+  width: 48%; 
   padding: 12px;
-  border-radius: 12px; /* Красивые закругления */
+  border-radius: 12px; 
   text-decoration: none;
   font-size: 14px;
   color: var(--color-text-main);
   transition: background-color 0.2s ease, transform 0.2s ease;
+  
+  /* Сбрасываем стандартные стили кнопок браузера */
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--main-font); 
 }
 
-/* Эффект при наведении (как у кнопок справа) */
+/* Эффект при наведении на Home */
 .footer-nav-link:hover {
-  background-color: rgba(0, 0, 0, 0.05); /* Легкий серый фон */
+  background-color: rgba(0, 0, 0, 0.05);
   transform: translateY(-1px);
 }
 
-/* Отдельный фон для Logout при наведении (красноватый) */
+/* Эффект при наведении на Logout */
 .footer-nav-link.logout-btn:hover {
   background-color: rgba(176, 58, 46, 0.1);
 }

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   def main
     if logged_in?
       @user = current_user
+      @notes = current_user.notes.order(created_at: :desc)
     else
       redirect_to root_path, alert: "Please, log in account"
     end
