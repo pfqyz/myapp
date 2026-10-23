@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   delete '/logout', to: 'sessions#destroy', as: :logout
 
-  resources :users, only: %i[new create] 
+  resources :users, only: [:new, :create, :show, :destroy, :update] 
 
   get 'folders', to: 'pages#folders', as: :folders
   get 'schedule', to: 'pages#schedule', as: :schedule

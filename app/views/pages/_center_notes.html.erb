@@ -1,0 +1,50 @@
+<!-- app/views/pages/_center_notes.html.erb -->
+<main class="column content-center">
+  
+  <!-- Заголовок -->
+  <div class="notes-header">
+    <h2>My notes</h2>
+  </div>
+
+  <!-- Приветствие только для новых пользователей -->
+  <% if !current_user.has_notes %>
+    <p class="welcome-text">Your personal NotePage notes will be displayed here.</p>
+  <% end %>
+
+  <!-- Сетка для заметок и кнопки -->
+  <div class="notes-grid">
+    
+    <!-- Кнопка создания (в виде пустой книги) -->
+    <button id="openModalBtn" class="create-note-btn">
+      <!-- Используем встроенную иконку Google -->
+      <span class="material-symbols-outlined create-icon">add_circle</span>
+      <span class="create-text">Create new</span>
+    </button>
+
+    <!-- Заметки (в виде книг) -->
+    <% if @notes.any? %>
+      <% @notes.each do |note| %>
+        <div class="note-card">
+          <h3><%= note.title %></h3>
+        </div>
+      <% end %>
+    <% end %>
+    
+  </div>
+
+  <!-- МОДАЛЬНОЕ ОКНО (без изменений) -->
+  <dialog id="noteModal" class="modal-dialog">
+    <%= form_with model: Note.new, url: notes_path, method: :post, id: "new_note_form" do |f| %>
+      <h3>Create Note</h3>
+      
+      <div class="form-group" style="margin-top: 20px;">
+        <%= f.text_field :title, id: "note_title_input", placeholder: "Enter note title...", class: "form-box", autocomplete: "off" %>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="closeModalBtn" class="btn-cancel">Back</button>
+        <%= f.submit "Create", id: "submitNoteBtn", class: "form-submit-btn", disabled: true %>
+      </div>
+    <% end %>
+  </dialog>
+</main>

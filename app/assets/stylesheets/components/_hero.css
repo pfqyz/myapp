@@ -32,3 +32,87 @@
   color: var(--color-text-muted);
   margin-top: auto;
 }
+
+/* Сетка */
+.notes-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+/* Общие параметры для КНИГИ и КНОПКИ */
+.note-card, 
+.create-note-btn {
+  width: 120px;          
+  height: 160px;         
+  border-radius: 4px 12px 12px 4px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  /* Плавная анимация */
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Стиль самой заметки (Книги) */
+.note-card {
+  background-color: var(--color-bg-note); /* Новый цвет фона */
+  border: 1px solid rgba(22, 58, 16, 0.3); /* Тонкая зеленая обводка (полупрозрачная) */
+  border-left: 6px solid var(--color-primary); /* Толстый зеленый корешок */
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.05); 
+  padding: 16px 12px;
+  cursor: pointer;
+}
+
+.note-card:hover {
+  /* Подскакивает меньше (-2px) и наклоняется меньше (-1.5deg) */
+  transform: translateY(-2px) rotate(-1.5deg); 
+  box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.12); 
+}
+
+.note-card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: var(--color-text-main);
+  word-wrap: break-word;
+}
+
+/* Стиль кнопки создания */
+.create-note-btn {
+  background-color: transparent;
+  border: 2px dashed var(--border-color); 
+  border-left: 6px solid var(--color-text-muted); 
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-family: var(--main-font);
+}
+
+.create-note-btn:hover {
+  background-color: var(--color-bg-input); 
+  border-color: var(--color-primary); /* Вся рамка становится зеленой */
+  border-left-color: var(--color-primary); 
+  color: var(--color-primary);
+  /* Тот же мягкий эффект, что и у заметки */
+  transform: translateY(-2px) rotate(-1.5deg);
+}
+
+/* Стиль для иконки плюса */
+.create-icon {
+  font-size: 40px; /* Размер иконки (можно больше или меньше) */
+  color: var(--color-primary); /* Твой фирменный зеленый */
+  margin-bottom: 8px; /* Отступ до текста */
+
+  /* Опционально: делаем иконку залитой (solid), как было в твоем кружке.
+     Если нужен только контур, удали эту строчку. */
+  
+}
+
+.create-text {
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+}

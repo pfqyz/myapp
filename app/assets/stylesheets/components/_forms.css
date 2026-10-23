@@ -37,18 +37,123 @@
   color: #12121866;
 }
 
+/* Базовая кнопка (Активное состояние - Зеленая) */
 .form-submit-btn {
   font-family: var(--main-font);
   font-weight: 600;
-  background-color: var(--color-primary);
-  color: #C9C6CF;
+  background-color: var(--color-primary); /* Зеленый */
+  color: #FFFFFF; /* Белый текст для контраста */
   padding: 12px 24px;
-  border: none;
+  border: 2px solid var(--color-primary); /* Обводка в цвет фона */
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.3s ease; /* Плавная анимация перехода цвета */
 }
 
-.form-submit-btn:hover {
+/* Эффект при наведении на активную кнопку */
+.form-submit-btn:hover:not(:disabled) {
   background-color: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+}
+
+/* НЕАКТИВНАЯ КНОПКА (Disabled) */
+.form-submit-btn:disabled {
+  background-color: #E5E5E5; /* Светло-серый фон */
+  color: #999999; /* Серый текст, чтобы было понятно, что кнопка не работает */
+  border: 2px solid #CCCCCC; /* Четкая серая обводка */
+  cursor: not-allowed; /* Курсор "запрещено" */
+  opacity: 1; /* Убираем стандартную прозрачность браузера, чтобы цвета были четкими */
+}
+
+/* Само окно */
+.modal-dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 32px;
+  background-color: var(--color-bg-main); /* Наш серый фон */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Затемнение сзади */
+.modal-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(2px); 
+}
+
+/* Заголовок внутри окна */
+.modal-dialog h3 {
+  margin-top: 0;
+  color: var(--color-text-main);
+}
+
+/* Общий контейнер для кнопок внизу */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+/* Кнопка Back (Отмена) */
+.btn-cancel {
+  appearance: none; /* Убираем стили браузера */
+  background-color: transparent;
+  border: 2px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--main-font);
+  font-weight: 600;
+  color: var(--color-text-main);
+  transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+  background-color: var(--color-bg-input);
+  border-color: var(--color-text-muted);
+}
+
+/* Кнопка Create (Активная) */
+.form-submit-btn {
+  appearance: none; /* Убираем стили браузера */
+  font-family: var(--main-font);
+  font-weight: 600;
+  background-color: var(--color-primary);
+  color: #FFFFFF;
+  padding: 10px 20px;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Кнопка Create (Неактивная - серый фон, четкая рамка) */
+.form-submit-btn:disabled {
+  background-color: #E5E5E5;
+  color: #999999;
+  border: 2px solid #CCCCCC;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* Поле ввода внутри окна */
+.modal-dialog .form-box {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background-color: var(--color-bg-input);
+  font-family: var(--main-font);
+  font-size: 15px;
+  color: var(--color-text-main);
+  outline: none;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+.modal-dialog .form-box:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(22, 58, 16, 0.1);
 }

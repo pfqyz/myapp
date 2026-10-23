@@ -39,6 +39,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      redirect_to profile_path, notice: "Profile updated successfully!"
+    else
+      redirect_to profile_path, alert: @user.errors.full_messages.to_sentence
+    end
+  end
+
   private
 
   def user_params

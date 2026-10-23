@@ -13,25 +13,30 @@
   width: 100%;
 }
 
+/* Карточка профиля - в стиле Create new */
 .profile-card-link {
   display: flex;
   align-items: center;
   gap: 12px;
   width: 100%;
-  max-width: 100%;     
-  padding: 24px 16px;
+  padding: 16px;
   border-radius: 12px;  
   box-sizing: border-box;           
   text-decoration: none;          
   color: var(--color-text-main);                 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  background-color: #C9C6CF; 
+  
+  /* Пунктирная обводка и прозрачный фон по умолчанию */
+  background-color: transparent;
+  border: 2px dashed var(--border-color);
+  
+  transition: all 0.3s ease; /* Плавная анимация */
 }
 
 .profile-card-link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  /* При наведении загорается светло-серым */
+  background-color: var(--color-bg-input); 
+  border-color: var(--color-text-muted); /* Обводка становится чуть темнее */
+  transform: translateY(-2px); /* Легкий подъем */
 }
 
 .profile-name {

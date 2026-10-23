@@ -1,17 +1,13 @@
+<!-- app/views/pages/main.html.erb -->
 <div class="three-column-layout">
   
-  <%= render 'sidebar' %> <!-- Вставляем партиал -->
+  <!-- Левая колонка (профиль, меню, выход) -->
+  <%= render 'sidebar' %>
 
-  <main class="column content-center">
-    <div class="notes-header">
-      <h2>My notes</h2>
-      <p>Your personal NotePage notes will be displayed here.</p>
-    </div>
-  </main>
+  <!-- Центральная колонка (заметки) -->
+  <%= render 'center_notes' %>
 
-  <aside class="column sidebar-right">
-    <h2>TO DO</h2>
-    <p>Your tasks will be displayed here.</p>
-  </aside>
-
+  <!-- Правая колонка (To do) -->
+  <%= render 'right_sidebar' %>
+  
 </div>
