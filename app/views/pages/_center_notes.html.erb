@@ -24,9 +24,9 @@
     <!-- Заметки (в виде книг) -->
     <% if @notes.any? %>
       <% @notes.each do |note| %>
-        <div class="note-card">
+        <%= link_to note_path(note), class: "note-card" do %>
           <h3><%= note.title %></h3>
-        </div>
+        <% end %>
       <% end %>
     <% end %>
     

@@ -1,12 +1,12 @@
 <!-- app/views/pages/_sidebar.html.erb -->
 <aside class="column sidebar-workspace">
-  
+
   <!-- Profile -->
   <div class="sidebar-top">
     <%= link_to profile_path, class: "profile-card-link" do %>
       <span class="material-symbols-outlined icon">account_circle</span>
       <div class="info">
-        <span class="profile-name"><%= @user.name %></span>
+        <span class="profile-name"><%= current_user.name %></span>
         <span class="hint">Go to profile</span>
       </div>
     <% end %>

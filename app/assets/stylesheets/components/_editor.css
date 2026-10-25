@@ -1,0 +1,184 @@
+/* =========================================
+   РЕДАКТОР (ОСНОВА)
+   ========================================= */
+.note-editor-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--color-bg-main);
+  overflow: hidden;
+}
+
+.editor-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 24px;
+  background-color: var(--color-bg-input);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+/* Кнопки сверху (без изменений) */
+.toolbar-left, .toolbar-right { display: flex; gap: 12px; align-items: center; }
+.toolbar-center h2 { margin: 0; font-size: 16px; font-weight: 600; color: var(--color-text-main); }
+.tool-btn { background: transparent; border: 1px solid transparent; color: var(--color-text-main); padding: 8px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background-color 0.2s ease; }
+.tool-btn:hover:not(:disabled) { background-color: rgba(0, 0, 0, 0.05); }
+.tool-btn:disabled { color: var(--color-text-muted); cursor: not-allowed; }
+.tool-btn.primary { background-color: var(--color-primary); color: white; border-color: var(--color-primary); }
+.tool-btn.primary:hover { background-color: var(--color-primary-hover); }
+
+/* =========================================
+   ОСНОВНАЯ ОБЛАСТЬ И ХОЛСТ
+   ========================================= */
+.editor-body {
+  display: flex;
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.canvas-area {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px; 
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* Плавное сжатие */
+}
+
+.a4-wrapper {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  aspect-ratio: 297 / 210; 
+  width: 100%;
+  max-width: 1400px;
+  max-height: 100%;
+  position: relative;
+}
+
+#canvas-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================================
+   ПАНЕЛЬ (ШКАФ-КУПЕ)
+   ========================================= */
+.pages-drawer {
+  position: relative; /* Теперь она в потоке flex */
+  width: 0; /* Скрыта (ширина 0) */
+  height: 100%;
+  background-color: var(--color-bg-main);
+  border-right: 1px solid transparent; 
+  transition: width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s;
+  z-index: 30;
+}
+
+/* Когда панель открыта, даем ей ширину */
+.pages-drawer.open {
+  width: 280px;
+  border-right: 1px solid var(--border-color);
+}
+
+/* Скрываем контент, когда панель закрыта, чтобы он не вылезал */
+.drawer-content {
+  width: 280px;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  visibility: hidden; /* Невидим */
+  pointer-events: none; /* Не перехватывает клики мыши */
+  transition: opacity 0.2s ease, visibility 0.2s;
+  user-select: none; /* Запрещаем выделение текста */
+  -webkit-user-select: none;
+}
+
+.pages-drawer.open .drawer-content {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition-delay: 0.1s;
+}
+
+/* Язычок */
+.drawer-tab {
+  position: absolute;
+  right: -24px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 80px;
+  background-color: var(--color-bg-input);
+  border: 1px solid var(--border-color);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.05);
+  z-index: 31; 
+}
+
+.drawer-header h3 { margin: 0; font-size: 16px; }
+
+/* Список страниц со скроллом */
+.pages-list { 
+  list-style: none; 
+  padding: 8px 0; 
+  margin: 0 0 16px 0; 
+  flex: 1; 
+  overflow-x: hidden; /* Убираем скролл вправо */
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем миниатюры */
+  gap: 16px;
+}
+
+.pages-list li { 
+  cursor: pointer; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Миниатюра страницы (А4) */
+.page-thumbnail {
+  width: 140px; /* Уменьшили размер */
+  aspect-ratio: 297 / 210;
+  background-color: #FFFFFF;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pages-list li.active .page-thumbnail {
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 4px 12px rgba(22, 58, 16, 0.15);
+}
+
+.page-name {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+.pages-list li.active .page-name {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.add-page-btn { background: transparent; border: 1px dashed var(--border-color); color: var(--color-text-main); padding: 12px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; transition: all 0.2s; }
+.add-page-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }

@@ -1,15 +1,62 @@
-<div class="three-column-layout">
-  <%= render 'pages/sidebar' %>
-  
-  <main class="column content-center" style="grid-column: span 2;">
-    <div class="notes-header">
+<div class="note-editor-layout" data-note-id="<%= @note.id %>">
+
+  <header class="editor-toolbar">
+    <div class="toolbar-left">
+      <%= link_to main_path, class: "tool-btn", title: "Back to Home" do %>
+        <span class="material-symbols-outlined">home</span>
+      <% end %>
+    </div>
+
+    <div class="toolbar-center">
       <h2><%= @note.title %></h2>
-      <button id="saveCanvasBtn" class="btn-outline-green">Save Canvas</button>
     </div>
+
+    <div class="toolbar-right">
+      <button id="undoBtn" class="tool-btn" disabled title="Undo (Ctrl+Z)">
+        <span class="material-symbols-outlined">undo</span>
+      </button>
+      <button id="redoBtn" class="tool-btn" disabled title="Redo (Ctrl+Y)">
+        <span class="material-symbols-outlined">redo</span>
+      </button>
+      <button id="saveCanvasBtn" class="tool-btn primary" title="Save">
+        <span class="material-symbols-outlined">save</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="editor-body">
     
-    <!-- Контейнер для холста -->
-    <div class="canvas-wrapper">
-      <div id="canvas-container"></div>
-    </div>
-  </main>
+    <!-- ПАНЕЛЬ -->
+    <aside id="pagesDrawer" class="pages-drawer">
+      <div id="drawerTab" class="drawer-tab" title="Toggle Pages">
+        <span class="material-symbols-outlined">chevron_right</span>
+      </div>
+
+      <div class="drawer-content">
+        <div class="drawer-header">
+          <h3>Pages</h3>
+        </div>
+        
+        <ul class="pages-list" id="pagesList">
+          <!-- Список будет генерироваться через JS -->
+        </ul>
+
+        <button class="add-page-btn" id="addPageBtn">
+          <span class="material-symbols-outlined">add</span> Add Page
+        </button>
+      </div>
+    </aside>
+
+    <!-- ХОЛСТ -->
+    <div class="canvas-area">
+      <div class="a4-wrapper">
+        <div id="canvas-container"></div>
+      </div>
+    </div>  
+  </div>
 </div>
+
+<!-- БЕЗОПАСНАЯ ПЕРЕДАЧА JSON В JS -->
+<script id="note-initial-data" type="application/json">
+  <%= raw(@note.content.to_json) %>
+</script>

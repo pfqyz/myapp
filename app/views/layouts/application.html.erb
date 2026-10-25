@@ -29,16 +29,17 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <script src="https://cdn.jsdelivr.net/npm/konva@9.3.6/konva.min.js"></script>
     <%= javascript_importmap_tags %>
-    
+    <%= csrf_meta_tags %>
     <%# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script><%= csrf_meta_tags %> 
     
   </head>
 
   <body>
   <%# Показываем верхнее меню везде, КРОМЕ страниц с сайдбаром %>
-  <% unless controller_name == 'pages' && ['main', 'profile', 'folders', 'schedule', 'deleted_files'].include?(action_name) %>
-    <%= render 'shared/navigation' %>
+  <% unless (controller_name == 'pages' && ['main', 'profile', 'folders', 'schedule', 'deleted_files'].include?(action_name)) || controller_name == 'notes' %>
+    <%= render 'navigation' %>
   <% end %>
 
   <main class="container">

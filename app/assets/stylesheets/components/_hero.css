@@ -64,6 +64,8 @@
   box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.05); 
   padding: 16px 12px;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit; 
 }
 
 .note-card:hover {
