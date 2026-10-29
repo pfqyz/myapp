@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   get 'deleted_files', to: 'pages#deleted_files', as: :deleted_files
 
   resources :notes, only: [:create, :show, :update]
+  delete 'notes/:id/hard_delete', to: 'notes#hard_delete', as: :hard_delete_note
+
 end

@@ -28,6 +28,7 @@ class PagesController < ApplicationController
 
   def deleted_files
     @user = current_user
+    @deleted_notes = current_user.notes.deleted
   end
 
 end

@@ -8,7 +8,8 @@ class Note < ApplicationRecord
 
   scope :active, -> { where(is_active: true) }
   scope :shared, -> { where(is_shared: true) }
-
+  scope :active, -> { where(deleted_at: nil) }
+  scope :deleted, -> { where.not(deleted_at: nil) }
 
   def share!   = update!(is_shared: true)
   def unshare! = update!(is_shared: false)

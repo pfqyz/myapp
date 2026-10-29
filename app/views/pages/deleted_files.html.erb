@@ -1,14 +1,26 @@
 <div class="three-column-layout">
   <%= render 'sidebar' %>
 
-  <main class="column content-center">
+  <main class="column content-center" style="grid-column: span 2;">
     <div class="notes-header">
       <h2>Deleted Files</h2>
-      <p>Здесь будут файлы из корзины.</p>
+      <p style="color: var(--color-text-muted);">Right-click on a note to delete it permanently.</p>
+    </div>
+
+    <div class="notes-grid">
+      <% if @deleted_notes.any? %>
+        <% @deleted_notes.each do |note| %>
+          <div class="note-card deleted-card" data-note-id="<%= note.id %>">
+            <h3><%= note.title %></h3>
+            <!-- Кнопка для окончательного удаления -->
+            <button class="hard-delete-btn" title="Delete forever">
+              <span class="material-symbols-outlined">delete_forever</span>
+            </button>
+          </div>
+        <% end %>
+      <% else %>
+        <p class="welcome-text">Trash is empty.</p>
+      <% end %>
     </div>
   </main>
-  
-  <aside class="column sidebar-right">
-    <!-- Правая колонка, пока пустая -->
-  </aside>
 </div>

@@ -1,38 +1,35 @@
-<!-- app/views/pages/_center_notes.html.erb -->
 <main class="column content-center">
   
-  <!-- Заголовок -->
+  <!-- Заголовок и кнопка -->
   <div class="notes-header">
     <h2>My notes</h2>
+    
+    <button id="openModalBtn" class="create-note-btn">
+      <span class="material-symbols-outlined create-icon">add_circle</span>
+      <span class="create-text">Create new</span>
+    </button>
   </div>
 
-  <!-- Приветствие только для новых пользователей -->
+  <!-- Приветствие -->
   <% if !current_user.has_notes %>
     <p class="welcome-text">Your personal NotePage notes will be displayed here.</p>
   <% end %>
 
-  <!-- Сетка для заметок и кнопки -->
+  <!-- Сетка для заметок -->
   <div class="notes-grid">
-    
-    <!-- Кнопка создания (в виде пустой книги) -->
-    <button id="openModalBtn" class="create-note-btn">
-      <!-- Используем встроенную иконку Google -->
-      <span class="material-symbols-outlined create-icon">add_circle</span>
-      <span class="create-text">Create new</span>
-    </button>
-
-    <!-- Заметки (в виде книг) -->
     <% if @notes.any? %>
       <% @notes.each do |note| %>
-        <%= link_to note_path(note), class: "note-card" do %>
+        
+        <!-- ВОТ ЗДЕСЬ живет переменная note -->
+        <%= link_to note_path(note), class: "note-card", data: { note_id: note.id } do %>
           <h3><%= note.title %></h3>
         <% end %>
+        
       <% end %>
     <% end %>
-    
   </div>
 
-  <!-- МОДАЛЬНОЕ ОКНО (без изменений) -->
+  <!-- МОДАЛЬНОЕ ОКНО (оно должно быть вне цикла) -->
   <dialog id="noteModal" class="modal-dialog">
     <%= form_with model: Note.new, url: notes_path, method: :post, id: "new_note_form" do |f| %>
       <h3>Create Note</h3>
